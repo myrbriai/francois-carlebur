@@ -71,8 +71,8 @@ function nav(lang) {
       <a href="#/${lang}">${t.home}</a>
       <a href="#/${lang}/bio">${t.biography}</a>
       <a href="#/${lang}/collection">${t.collection}</a>
-      <a class="lang-switch" href="${otherHash || '#/' + otherLang}">${t.language}</a>
     </div>
+    <a class="lang-switch" href="${otherHash || '#/' + otherLang}">${t.language}</a>
   </nav>`;
 }
 
