@@ -548,3 +548,75 @@ a { color: inherit; text-decoration: none; }
 
   .btn { padding: 0.65rem 1.25rem; font-size: 0.82rem; }
 }
+
+/* ── Speech / Read-aloud button ──────────────────────────────────────────── */
+.speech-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.1rem;
+  background: var(--dark);
+  color: var(--gold-light);
+  border: 2px solid var(--gold);
+  border-radius: 99px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, border-color 0.2s;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.speech-btn:hover {
+  background: var(--gold);
+  color: var(--dark);
+}
+.speech-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.speech-icon svg { width: 100%; height: 100%; }
+
+/* Playing state — gold fill + subtle pulse */
+.speech-btn.speech-playing {
+  background: var(--gold);
+  color: var(--dark);
+  border-color: var(--gold-light);
+  animation: speech-pulse 2.2s ease-in-out infinite;
+}
+/* Paused state — dimmed with dashed border */
+.speech-btn.speech-paused {
+  background: var(--dark-mid);
+  color: var(--gold-light);
+  border-style: dashed;
+}
+
+@keyframes speech-pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.35); }
+  50%       { box-shadow: 0 4px 32px rgba(184,150,46,0.55); }
+}
+
+/* On small screens: icon-only pill, shift left of screen edge a bit */
+@media (max-width: 600px) {
+  .speech-btn {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.7rem 0.85rem;
+  }
+  .speech-label { display: none; }
+  .speech-icon  { width: 22px; height: 22px; }
+}
+
+/* Hide button if browser has no speech support (set by JS) */
+.speech-btn.speech-unsupported { display: none; }

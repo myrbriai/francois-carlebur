@@ -19,7 +19,16 @@
     </div>
   </div>
 
+  <!-- Floating read-aloud button (persists across page navigations) -->
+  <button id="speech-btn" class="speech-btn speech-idle"
+          onclick="Speech.toggle()"
+          aria-label="Read page aloud">
+    <span class="speech-icon"></span>
+    <span class="speech-label">Read aloud</span>
+  </button>
+
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/speech.js"></script>
 </body>
 </html>
